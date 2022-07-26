@@ -1,0 +1,229 @@
+title: Button
+fields:
+  -
+    handle: label
+    field:
+      input_type: text
+      type: text
+      localizable: true
+      listable: false
+      display: Label
+      replicator_preview: false
+      instructions_position: above
+      antlers: false
+      validate:
+        - required
+      visibility: visible
+  -
+    handle: link_type
+    field:
+      options:
+        entry: Entry
+        url: URL
+        asset: Asset
+        current: 'Current Page'
+        email: Email
+        tel: Phone
+      multiple: false
+      clearable: false
+      searchable: false
+      taggable: false
+      push_tags: false
+      cast_booleans: false
+      default: entry
+      display: 'Link Type'
+      type: select
+      icon: select
+      listable: false
+      instructions_position: above
+      validate:
+        - required
+      width: 50
+      visibility: visible
+  -
+    handle: entry
+    field:
+      max_items: 1
+      mode: default
+      type: entries
+      localizable: true
+      width: 50
+      listable: false
+      display: Entry
+      replicator_preview: false
+      validate:
+        - 'required_if:{this}.link_type,entry'
+      instructions_position: above
+      create: true
+      if:
+        link_type: 'equals entry'
+      visibility: visible
+  -
+    handle: url
+    field:
+      input_type: url
+      type: text
+      localizable: true
+      listable: false
+      display: URL
+      width: 50
+      validate:
+        - 'required_if:{this}.link_type,url'
+      instructions_position: above
+      antlers: false
+      if:
+        link_type: 'equals url'
+      visibility: visible
+  -
+    handle: email
+    field:
+      input_type: email
+      type: text
+      localizable: true
+      listable: false
+      display: Email
+      width: 50
+      replicator_preview: false
+      validate:
+        - 'required_if:{this}.link_type,email'
+      instructions_position: above
+      antlers: false
+      if:
+        link_type: 'equals email'
+      visibility: visible
+  -
+    handle: tel
+    field:
+      input_type: tel
+      type: text
+      localizable: true
+      listable: false
+      display: Phone
+      width: 50
+      replicator_preview: false
+      validate:
+        - 'required_if:{this}.link_type,tel'
+      instructions_position: above
+      antlers: false
+      if:
+        link_type: 'equals tel'
+      visibility: visible
+  -
+    handle: asset
+    field: common.image
+    config:
+      localizable: true
+      listable: false
+      display: Asset
+      width: 50
+      validate:
+        - 'required_if:{this}.link_type,asset'
+      if:
+        link_type: 'equals asset'
+  -
+    handle: show_controls
+    field:
+      mode: toggle
+      display: 'Show more settings'
+      type: revealer
+      icon: revealer
+      listable: false
+      instructions_position: above
+  -
+    handle: button_type
+    field:
+      options:
+        button: Button
+        inline: Inline
+      type: button_group
+      localizable: true
+      default: button
+      listable: false
+      display: 'Button Type'
+      replicator_preview: false
+      instructions_position: above
+      validate:
+        - required
+      if:
+        show_controls: 'equals true'
+      visibility: visible
+  -
+    handle: anchor
+    field:
+      placeholder: formular
+      input_type: text
+      type: text
+      localizable: true
+      listable: false
+      display: Anchor
+      width: 50
+      instructions_position: above
+      antlers: false
+      prepend: '#'
+      visibility: visible
+      if:
+        show_controls: 'equals true'
+        link_type: 'contains_any entry, url, current'
+  -
+    handle: target_blank
+    field:
+      type: toggle
+      localizable: true
+      listable: false
+      display: 'Target Blank'
+      replicator_preview: false
+      instructions_position: above
+      default: false
+      validate:
+        - required
+      width: 50
+      visibility: visible
+      if:
+        show_controls: 'equals true'
+        link_type: 'contains_any entry, url, current, asset'
+  -
+    handle: download
+    field:
+      default: false
+      display: Download
+      type: toggle
+      icon: toggle
+      width: 50
+      listable: false
+      instructions_position: above
+      visibility: visible
+      if:
+        show_controls: 'equals true'
+        link_type: 'equals asset'
+      validate:
+        - required
+  -
+    handle: attr_title
+    field:
+      input_type: text
+      type: text
+      localizable: true
+      listable: false
+      display: Title
+      width: 50
+      replicator_preview: false
+      instructions_position: above
+      antlers: false
+      if:
+        show_controls: 'equals true'
+      visibility: visible
+  -
+    handle: attr_aria
+    field:
+      input_type: text
+      type: text
+      localizable: true
+      listable: false
+      display: 'Aria Label'
+      width: 50
+      replicator_preview: false
+      instructions_position: above
+      antlers: false
+      if:
+        show_controls: 'equals true'
+      visibility: visible

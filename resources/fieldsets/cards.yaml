@@ -1,0 +1,26 @@
+title: Cards
+fields:
+  -
+    handle: cards
+    field:
+      fields:
+        -
+          handle: buttons
+          field: buttons.buttons
+          config:
+            listable: false
+            display: Button
+            max_rows: 1
+      mode: stacked
+      add_row: 'Add button'
+      reorderable: true
+      display: Cards
+      type: grid
+      icon: grid
+      localizable: true
+      listable: false
+      validate:
+        - required
+      replicator_preview: false
+      instructions_position: above
+      visibility: visible

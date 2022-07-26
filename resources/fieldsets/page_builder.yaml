@@ -1,0 +1,21 @@
+title: 'Page Builder'
+fields:
+  -
+    handle: page_builder
+    field:
+      type: replicator
+      localizable: true
+      collapse: accordion
+      listable: false
+      display: 'Page Builder'
+      sets:
+        cards:
+          display: Cards
+          fields:
+            -
+              import: cards
+              instructions_position: above
+      visibility: visible
+      previews: true
+      validate:
+        - required
